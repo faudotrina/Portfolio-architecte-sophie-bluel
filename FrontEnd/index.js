@@ -17,9 +17,7 @@ function genererArticles(data) {
     }
 }
 
-// console.log(data)
 genererArticles(data);
-
 
 /***** filtres *****/
 
@@ -60,5 +58,10 @@ filterByBar.addEventListener("click", function () {
     // console.log(piecesFiltrees)
 });
 
+
+// const btnLogout = document.querySelector(".btnLogout")
+// btnLogout.addEventListener("click", function () {
+//     window.sessionStorage.removeItem("token", data.token)
+// })
 
 

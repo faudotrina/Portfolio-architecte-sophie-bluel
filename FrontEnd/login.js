@@ -1,7 +1,7 @@
-
 const formulaireLogin = document.querySelector(".login")
 
-formulaireLogin.addEventListener("submit", function (event) {
+formulaireLogin.addEventListener("submit", async function (event) {
+    // Désactivation du comportement par défaut du navigateur
     event.preventDefault();
 
     const identifiant = {
@@ -9,19 +9,24 @@ formulaireLogin.addEventListener("submit", function (event) {
         "password": event.target.querySelector("[name=inputPassword]").value,
     };
 
+    // Création de la charge utile au format JSON
     const chargeUtile = JSON.stringify(identifiant);
 
-    // Appel de la fonction fetch avec toutes les informations nécessaires
-    fetch("http://localhost:5678/api/users/login", {
+    const response = await fetch("http://localhost:5678/api/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: chargeUtile
     });
 
-    if (identifiant.email === "sophie.bluel@test.tld" && identifiant.password === "S0phie") {
+    const data = await response.json()
+    const token = data.token
+    // console.log(token)
+
+    if (token != null) {
         window.location.href = "./index.html"
+        console.log("connexion réussie")
+        window.sessionStorage.setItem("token", data.token)
     } else {
-        alert("erreur association nom utilisateur, mot de passe")
+        alert("erreur de connexion")
     }
 });
-
