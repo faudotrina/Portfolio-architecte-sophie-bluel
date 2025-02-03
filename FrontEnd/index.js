@@ -58,10 +58,18 @@ filterByBar.addEventListener("click", function () {
     // console.log(piecesFiltrees)
 });
 
+const btnLogin = document.getElementById("btnLogin")
+const btnLogout = document.getElementById("btnLogout")
+const token = window.sessionStorage.getItem("token")
 
-// const btnLogout = document.querySelector(".btnLogout")
-// btnLogout.addEventListener("click", function () {
-//     window.sessionStorage.removeItem("token", data.token)
-// })
+if (token) {
+    btnLogin.style.display = "none"
 
-
+    btnLogout.addEventListener("click", function (event) {
+        event.preventDefault();
+        window.sessionStorage.removeItem("token")
+        window.location.reload()
+    })
+} else {
+    btnLogout.style.display = "none"
+}
