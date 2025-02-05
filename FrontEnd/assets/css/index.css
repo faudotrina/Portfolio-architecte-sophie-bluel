@@ -199,6 +199,7 @@ section {
 	width: 630px;
 	height: 688px;
 	border-radius: 10px;
+	overflow: auto;
 }
 
 .close {
@@ -227,10 +228,10 @@ section {
 }
 
 .modal-img {
-	padding: 20px 90px 20px 90px;
+	padding: 20px 92px 20px 94px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	gap: 25px;
+	gap: 12px;
 }
 
 h1 {
@@ -287,11 +288,24 @@ h3 {
 	align-items: center;
 }
 
+.btnAddPhoto button:active {
+    transform: scale(0.95); /* Réduit légèrement la taille */
+}
+
+.btnAddPhoto button:hover {
+	color: white;
+	background-color: black;
+}
+
+.btnSend:active {
+	transform: scale(0.95);
+}
+
 .trait {
-    width: 100px;
-    height: 1px;
-    background-color: #B3B3B3;
-    margin: 20px auto;
+	width: 70%;
+	height: 1px;
+	background-color: #B3B3B3;
+	margin: 20px auto;
 }
 
 .btnAddPhoto button {
@@ -309,7 +323,8 @@ h3 {
 	margin: 0% 10px 5% 0%;
 	width: 17%;
 	padding: 10px 0px 10px 0px;
-	font-family: syne;
+	font-family: 'Syne';
+	cursor: pointer;
 }
 
 
@@ -328,9 +343,11 @@ button {
 	justify-content: center;
 	align-items: center;
 	box-shadow: none;
+	cursor: pointer;
 	/* padding: 0px 10% 0px 10%; */
 
 }
+
 
 .menu button:hover {
 	background-color: #1D6154;
@@ -461,6 +478,7 @@ input[type="submit"] {
 	width: 180px;
 	text-align: center;
 	border-radius: 60px;
+	cursor: pointer;
 }
 
 footer nav ul {

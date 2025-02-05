@@ -97,6 +97,18 @@ closeModal.onclick = function () {
     modal.style.display = "none"
 }
 
+window.onclick = function (event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" || event.key === "Esc") {
+        modal.style.display = "none"
+    }
+})
+
 
 /******* images modale ******/
 function genererImgModal (data) {
@@ -111,5 +123,18 @@ function genererImgModal (data) {
     }
 }
 genererImgModal(data)
+
+const btnAddPhoto = document.getElementById("addPhoto")
+
+// btnAddPhoto.addEventListener("submit", await function (event) {
+//     event.preventDefault();
+
+//     const photo = {
+//         "image": event.target.querySelector("")
+//         "title":
+//         "category":
+//     }
+//     const response = await fetch("http://localhost:5678/api/users/login")
+// })
 
 

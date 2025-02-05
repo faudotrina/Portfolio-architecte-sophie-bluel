@@ -247,8 +247,18 @@ button {
     border-radius: 60px;
     height: 36px;
 	font-size: 14px;
-	
+	cursor: pointer;
 }
+
+button:hover {
+	color: white;
+	background-color: black;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
 
 a {
 	color: #3D3D3D;
