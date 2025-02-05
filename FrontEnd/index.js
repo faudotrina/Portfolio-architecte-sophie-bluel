@@ -62,20 +62,25 @@ const btnLogin = document.getElementById("btnLogin")
 const btnLogout = document.getElementById("btnLogout")
 const token = window.sessionStorage.getItem("token")
 const btnFiltre = document.querySelector(".menu")
+const edition = document.querySelector(".edition")
+const btnProjetEdition = document.getElementById("mybtn")
 
 
 if (token) {
     btnLogin.style.display = "none";
     btnFiltre.style.display = "none"
+    edition.style.display = "block"
 
     btnLogout.addEventListener("click", function (event) {
         event.preventDefault();
         window.sessionStorage.removeItem("token")
         window.location.reload()
+        
     });
 
 } else {
     btnLogout.style.display = "none"
+    btnProjetEdition.style.display = "none"
 }
 
 
@@ -101,7 +106,7 @@ function genererImgModal (data) {
         
         img.src = data[i].imageUrl
         
-        figure.appendChild(img)   
+        figure.appendChild(img)
         document.querySelector(".modal-img").appendChild(figure)
     }
 }
