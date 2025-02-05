@@ -2,12 +2,14 @@ const response = await fetch("http://localhost:5678/api/works");
 const data = await response.json();
 
 function genererArticles(data) {
+    document.querySelector(".gallery").innerHTML = "";
+
     for (let i = 0; i < data.length; i++) {
         const figureElement = document.createElement("figure")
         const imgElement = document.createElement("img")
         const figcaptionElement = document.createElement("figcaption")
 
-        figureElement.innerhtml = data[i]
+        // figureElement.innerHTML = data[i]
         imgElement.src = data[i].imageUrl
         figcaptionElement.innerText = data[i].title
 
@@ -75,7 +77,7 @@ if (token) {
         event.preventDefault();
         window.sessionStorage.removeItem("token")
         window.location.reload()
-        
+
     });
 
 } else {
@@ -109,17 +111,63 @@ document.addEventListener("keydown", function (event) {
     }
 })
 
+async function supprimerImage(imageId, figureElement) {
+    const token = window.sessionStorage.getItem("token"); // Récupère le token d'authentification
+
+    if (!token) {
+        alert("Vous devez être connecté pour supprimer une image.");
+        return;
+    }
+
+    const confirmation = confirm("Voulez-vous vraiment supprimer cette image ?");
+    if (!confirmation) return;
+
+    try {
+        const response = await fetch(`http://localhost:5678/api/works/${imageId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (response.ok) {
+            figureElement.remove(); // Supprime l'image du DOM
+            alert("Image supprimée avec succès !");
+        } else {
+            alert("Erreur lors de la suppression de l'image.");
+        }
+    } catch (error) {
+        console.error("Erreur :", error);
+        alert("Une erreur est survenue.");
+    }
+}
+
 
 /******* images modale ******/
-function genererImgModal (data) {
+function genererImgModal(data) {
+    const modalContainer = document.querySelector(".modal-img");
+    modalContainer.innerHTML = "";
+
     for (let i = 0; i < data.length; i++) {
-        const figure = document.createElement("figure")    
+        const figure = document.createElement("figure")
+        figure.style.position = "relative";
+
         const img = document.createElement("img")
-        
         img.src = data[i].imageUrl
-        
+
+        const deleteIcon = document.createElement("i")
+        deleteIcon.classList.add("fa-solid", "fa-trash-can", "delete-icon");
+        deleteIcon.dataset.id = data[i].id;
+
+        // Ajoute un événement pour supprimer l'image
+        deleteIcon.addEventListener("click", function () {
+            supprimerImage(data[i].id, figure);
+        });
+
         figure.appendChild(img)
-        document.querySelector(".modal-img").appendChild(figure)
+        figure.appendChild(deleteIcon)
+        modalContainer.appendChild(figure);
     }
 }
 genererImgModal(data)

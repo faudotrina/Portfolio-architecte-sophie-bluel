@@ -289,7 +289,8 @@ h3 {
 }
 
 .btnAddPhoto button:active {
-    transform: scale(0.95); /* Réduit légèrement la taille */
+	transform: scale(0.95);
+	/* Réduit légèrement la taille */
 }
 
 .btnAddPhoto button:hover {
@@ -300,6 +301,41 @@ h3 {
 .btnSend:active {
 	transform: scale(0.95);
 }
+
+.delete-icon {
+	position: absolute;
+	top: 5px;
+	width: 24px;
+	/* Taille du cercle */
+	height: 24px;
+	/* Taille du cercle */
+	font-size: 16px;
+	/* Taille de l'icône */
+	color: white;
+	background-color: black;
+	border-radius: 3px 3px 3px 3px;
+	display: flex;
+	cursor: pointer;
+	right: 8px;
+}
+
+.fa-trash-can:before {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 4px;
+}
+
+
+.delete-icon i {
+	margin: 0;
+	/* S'assurer qu'il n'y a pas d'espacement autour de l'icône */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* S'assurer que l'icône est en mode bloc */
+}
+
 
 .trait {
 	width: 70%;
