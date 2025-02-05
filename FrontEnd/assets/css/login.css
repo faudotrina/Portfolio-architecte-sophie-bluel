@@ -138,6 +138,8 @@ body {
 	margin: auto;
 	font-family: 'Work Sans';
 	font-size: 14px;
+	background-color: #fffef8;
+	overflow-x: hidden;
 }
 
 header {
@@ -261,5 +263,9 @@ a {
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em;
+	margin: 8% 0% 0% 1%;
+}
+
+footer {
+	background-color: white;
 }

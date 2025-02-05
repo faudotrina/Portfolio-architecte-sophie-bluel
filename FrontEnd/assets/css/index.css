@@ -140,16 +140,97 @@ body {
 	margin: auto;
 	font-family: 'Work Sans';
 	font-size: 14px;
+	background-color: #fffef8;
+	overflow-x: hidden;
 }
+
 
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0 12% 0px
+	margin: 50px 0 10% 0px;
 }
 
 section {
 	margin: 50px 0
+}
+
+#edition {
+	color: white;
+	width: 100%;
+	border: solid #000000;
+	text-align: center;
+	background-color: #000000;
+	padding: 1%;
+	left: 0;
+	position: absolute;
+	/* display: none; */
+}
+
+#projetEdition {
+	color: #000000;
+	height: 10px;
+	display: inline;
+}
+
+.modal {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	z-index: 1;
+	/* pour s'afficher 
+	au dessus des éléments en position relative */
+	padding-top: 10px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+	background-color: #FFFFFF;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 630px;
+	height: 688px;
+	border-radius: 10px;
+}
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	/* cursor: help;
+	position: relative; */
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+	/* content: attr(aria-label); */
+}
+
+.modal-content img {
+	width: 78px;
+	height: 104px;
+	display: inline;
+	flex-direction: row;
+	/* padding: 35px 0px 32px 0px; */
+}
+
+.modal-img {
+	padding: 20px 90px 20px 90px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	gap: 25px;
 }
 
 h1 {
@@ -179,21 +260,54 @@ h2 {
 	color: #1D6154
 }
 
+h3 {
+	font-family: 'Work Sans';
+	font-weight: 400;
+	font-size: 26px;
+	color: #1D6154;
+	text-align: center;
+	color: #000000;
+	padding: 35px 0px 32px 0px;
+}
+
+.modal-content p {
+	padding: 0px 10% 0px 10%;
+}
+
 .menu {
 	display: flex;
 	justify-content: center;
+
 }
 
 .menu button {
 	border: solid #1D6154 2px;
+	border-radius: 60px;
+	background-color: white;
+	color: #1D6154;
+	font-size: 16px;
+	margin: 0% 10px 5% 0%;
+	width: 17%;
+	padding: 10px 0px 10px 0px;
+	font-family: syne;
+}
+
+button {
+	font-family: 'Syne';
+    font-weight: 700;
+    color: white;
+    background-color: #1D6154;
+    margin: 15px 0px 30px 0px;
+    width: 180px;
+    text-align: center;
     border-radius: 60px;
-    background-color: white;
-    color: #1D6154;
-    font-size: 16px;
-    margin: 0% 10px 5% 0%;
-    width: 17%;
-    padding: 10px 0px 10px 0px;
-    font-family: syne;
+    height: 36px;
+	font-size: 14px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* padding: 0px 10% 0px 10%; */
+	
 }
 
 .menu button:hover {
@@ -217,7 +331,7 @@ nav a:hover {
 }
 
 a.actif {
-	font-weight:bold
+	font-weight: bold
 }
 
 nav li {
@@ -262,7 +376,8 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 	font-size: 30px;
-	margin: 10% 0% 5% 0%;
+	margin: 8% 2% 8% 36%;
+	display: inline-block;
 }
 
 .gallery {
@@ -330,4 +445,8 @@ footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
+}
+
+footer {
+	background-color: white;
 }

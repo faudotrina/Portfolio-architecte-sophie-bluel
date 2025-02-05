@@ -61,15 +61,50 @@ filterByBar.addEventListener("click", function () {
 const btnLogin = document.getElementById("btnLogin")
 const btnLogout = document.getElementById("btnLogout")
 const token = window.sessionStorage.getItem("token")
+const btnFiltre = document.querySelector(".menu")
+
 
 if (token) {
-    btnLogin.style.display = "none"
+    btnLogin.style.display = "none";
+    btnFiltre.style.display = "none"
 
     btnLogout.addEventListener("click", function (event) {
         event.preventDefault();
         window.sessionStorage.removeItem("token")
         window.location.reload()
-    })
+    });
+
 } else {
     btnLogout.style.display = "none"
 }
+
+
+/****** modal *****/
+const openModal = document.getElementById("mybtn")
+const modal = document.getElementById("mymodal")
+const closeModal = document.querySelector(".close")
+
+openModal.onclick = function () {
+    modal.style.display = "block";
+}
+
+closeModal.onclick = function () {
+    modal.style.display = "none"
+}
+
+
+/******* images modale ******/
+function genererImgModal (data) {
+    for (let i = 0; i < data.length; i++) {
+        const figure = document.createElement("figure")    
+        const img = document.createElement("img")
+        
+        img.src = data[i].imageUrl
+        
+        figure.appendChild(img)   
+        document.querySelector(".modal-img").appendChild(figure)
+    }
+}
+genererImgModal(data)
+
+

@@ -27,7 +27,7 @@ formulaireLogin.addEventListener("submit", async function (event) {
         console.log("connexion réussie")
         window.sessionStorage.setItem("token", data.token)
     } else {
-        alert("erreur de connexion")
+        alert("Erreur dans l’identifiant ou le mot de passe")
     }
 });
 
