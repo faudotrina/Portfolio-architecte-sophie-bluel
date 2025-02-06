@@ -110,23 +110,34 @@ window.onclick = function (event) {
 const addPhotoModal = document.getElementById("addPhotoModal");
 const openAddPhotoBtn = document.getElementById("openAddPhoto");
 const closeAddPhotoModal = document.getElementById("closeAddPhotoModal");
+const deletePhotoModal = document.getElementById("mymodal"); // La première modale
+const backToDeleteModal = document.getElementById("backToDeleteModal")
 
-// Ouvrir la modale
-openAddPhotoBtn.addEventListener("click", () => {
-    addPhotoModal.style.display = "flex";
-});
+// Ouvrir la modale d'ajout et fermer la modale de suppression
+openAddPhotoBtn.onclick = function () {
+    addPhotoModal.style.display = "flex";  
+    deletePhotoModal.style.display = "none"; // Ferme la première modale
+};
 
-// Fermer la modale au clic sur la croix
-closeAddPhotoModal.addEventListener("click", () => {
+// Fermer la modale d'ajout de photo
+closeAddPhotoModal.onclick = function () {
     addPhotoModal.style.display = "none";
-});
+};
 
-// Fermer la modale si on clique en dehors du contenu
-window.addEventListener("click", (event) => {
+backToDeleteModal.onclick = function () {
+    deletePhotoModal.style.display = "flex";
+    addPhotoModal.style.display = "none";
+}
+
+// Fermer les modales au clic en dehors
+window.onclick = function (event) {
     if (event.target === addPhotoModal) {
         addPhotoModal.style.display = "none";
     }
-});
+    if (event.target === deletePhotoModal) {
+        deletePhotoModal.style.display = "none";
+    }
+};
 
 
 document.addEventListener("keydown", function (event) {
