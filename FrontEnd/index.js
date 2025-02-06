@@ -22,7 +22,6 @@ function genererArticles(data) {
 genererArticles(data);
 
 /***** filtres *****/
-
 const filterByAll = document.querySelector(".all")
 filterByAll.addEventListener("click", function () {
     const piecesFiltrees = data.filter(function (article) {
@@ -60,6 +59,7 @@ filterByBar.addEventListener("click", function () {
     // console.log(piecesFiltrees)
 });
 
+/***** affichage boutton login logout *****/
 const btnLogin = document.getElementById("btnLogin")
 const btnLogout = document.getElementById("btnLogout")
 const token = window.sessionStorage.getItem("token")
@@ -86,9 +86,9 @@ if (token) {
 }
 
 
-/****** modal *****/
-const openModal = document.getElementById("mybtn")
+/****** modal suppression Image *****/
 const modal = document.getElementById("mymodal")
+const openModal = document.getElementById("mybtn")
 const closeModal = document.querySelector(".close")
 
 openModal.onclick = function () {
@@ -104,6 +104,30 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 };
+
+/****** modal ajouter Image *****/
+
+const addPhotoModal = document.getElementById("addPhotoModal");
+const openAddPhotoBtn = document.getElementById("openAddPhoto");
+const closeAddPhotoModal = document.getElementById("closeAddPhotoModal");
+
+// Ouvrir la modale
+openAddPhotoBtn.addEventListener("click", () => {
+    addPhotoModal.style.display = "flex";
+});
+
+// Fermer la modale au clic sur la croix
+closeAddPhotoModal.addEventListener("click", () => {
+    addPhotoModal.style.display = "none";
+});
+
+// Fermer la modale si on clique en dehors du contenu
+window.addEventListener("click", (event) => {
+    if (event.target === addPhotoModal) {
+        addPhotoModal.style.display = "none";
+    }
+});
+
 
 document.addEventListener("keydown", function (event) {
     if (event.key === "Escape" || event.key === "Esc") {
@@ -170,19 +194,4 @@ function genererImgModal(data) {
         modalContainer.appendChild(figure);
     }
 }
-genererImgModal(data)
-
-const btnAddPhoto = document.getElementById("addPhoto")
-
-// btnAddPhoto.addEventListener("submit", await function (event) {
-//     event.preventDefault();
-
-//     const photo = {
-//         "image": event.target.querySelector("")
-//         "title":
-//         "category":
-//     }
-//     const response = await fetch("http://localhost:5678/api/users/login")
-// })
-
-
+genererImgModal(data);

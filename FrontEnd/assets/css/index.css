@@ -173,6 +173,9 @@ section {
 	display: inline;
 }
 
+
+/* modal suppression image */
+
 .modal {
 	display: none;
 	align-items: center;
@@ -191,13 +194,14 @@ section {
 	background-color: rgba(0, 0, 0, 0.4);
 }
 
+
 .modal-content {
 	background-color: #FFFFFF;
 	margin: 15% auto;
 	padding: 20px;
 	border: 1px solid #888;
-	width: 630px;
-	height: 688px;
+	width: 35%;
+	height: 80%;
 	border-radius: 10px;
 	overflow: auto;
 }
@@ -224,14 +228,14 @@ section {
 	height: 104px;
 	display: inline;
 	flex-direction: row;
-	/* padding: 35px 0px 32px 0px; */
+	padding-bottom: 20px;
 }
 
 .modal-img {
-	padding: 20px 92px 20px 94px;
+	padding: 20px 90px 20px 60px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	gap: 12px;
+	gap: 5px;
 }
 
 h1 {
@@ -338,7 +342,7 @@ h3 {
 
 
 .trait {
-	width: 70%;
+	width: 77%;
 	height: 1px;
 	background-color: #B3B3B3;
 	margin: 20px auto;
