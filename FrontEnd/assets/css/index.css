@@ -182,8 +182,6 @@ section {
 	justify-content: center;
 	position: fixed;
 	z-index: 1;
-	/* pour s'afficher 
-	au dessus des éléments en position relative */
 	padding-top: 10px;
 	left: 0;
 	top: 0;
@@ -194,16 +192,25 @@ section {
 	background-color: rgba(0, 0, 0, 0.4);
 }
 
-
 .modal-content {
 	background-color: #FFFFFF;
-	margin: 15% auto;
-	padding: 20px;
+	margin: 20px auto;
+	padding: 20px 0px 0px 2%;
 	border: 1px solid #888;
-	width: 35%;
-	height: 80%;
+	width: 37%;
+    height: 85%;
 	border-radius: 10px;
-	overflow: auto;
+	overflow: hidden;
+}
+
+.modal-content-addPhotoModal {
+	background-color: #FFFFFF;
+	margin: 20px auto;
+	border: 1px solid #888;
+	width: 37%;
+    height: 85%;
+	border-radius: 10px;
+	overflow: hidden;
 }
 
 .close {
@@ -211,8 +218,27 @@ section {
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
-	/* cursor: help;
-	position: relative; */
+	padding-right: 30px;
+	padding-top: 10px;
+}
+
+.closeAddPhotoModal {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	padding-right: 30px;
+	padding-top: 20px;
+}
+
+#backToDeleteModal {
+	color: #aaa;
+	float: left;
+	width: 21px;
+	height: 21px;
+	font-weight: bold;
+	padding-left: 30px;
+	padding-top: 25px;
 }
 
 .close:hover,
@@ -220,7 +246,6 @@ section {
 	color: black;
 	text-decoration: none;
 	cursor: pointer;
-	/* content: attr(aria-label); */
 }
 
 .modal-content img {
@@ -275,6 +300,10 @@ h3 {
 	padding: 35px 0px 32px 0px;
 }
 
+.modal-content-addPhotoModal h3 {
+	padding: 45px 0px 20px 0px;
+}
+
 .modal-content p {
 	padding: 0px 10% 0px 10%;
 }
@@ -294,7 +323,6 @@ h3 {
 
 .btnAddPhoto button:active {
 	transform: scale(0.95);
-	/* Réduit légèrement la taille */
 }
 
 .btnAddPhoto button:hover {
@@ -306,15 +334,51 @@ h3 {
 	transform: scale(0.95);
 }
 
+#btnPhotoUploadForm {
+	background-color: #CBD6DC;
+	border: none;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	color: #306685;
+	margin: 0px 0px 10px 0px;
+}
+
+
+.squareAddPhoto {
+	width: 385px;
+    height: 150px; 
+    background-color: #E8F1F6;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #B9C5CC;
+	margin-bottom: 25px;
+	margin-top: 10px;
+	border-radius: 5px;
+}
+
+.squareAddPhoto p {
+	font-size: 10px;
+	font-weight: 400;
+	font-family: 'Work Sans';
+	color: #444444;
+}
+
+#btnPhotoUploadForm {
+	font-weight: 500;
+	font-family: 'Work Sans';
+	align-items: center;
+	margin-top: 8px;
+}
+
 .delete-icon {
 	position: absolute;
 	top: 5px;
 	width: 24px;
-	/* Taille du cercle */
 	height: 24px;
-	/* Taille du cercle */
 	font-size: 16px;
-	/* Taille de l'icône */
 	color: white;
 	background-color: black;
 	border-radius: 3px 3px 3px 3px;
@@ -344,33 +408,51 @@ h3 {
 .fa-arrow-left:hover,
 .fa-arrow-left:focus {
 	color: black;
-	/* text-decoration: none; */
 	cursor: pointer;
-	/* content: attr(aria-label); */
 }
 
 
 .delete-icon i {
 	margin: 0;
-	/* S'assurer qu'il n'y a pas d'espacement autour de l'icône */
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	/* S'assurer que l'icône est en mode bloc */
 }
 
 
-.trait {
+.traitAddPhoto {
 	width: 77%;
 	height: 1px;
 	background-color: #B3B3B3;
 	margin: 20px auto;
 }
 
+.traitValiderPhoto {
+	width: 68%;
+	height: 1px;
+	background-color: #B3B3B3;
+	margin: 20px auto;
+}
+
+#openAddPhoto {
+	color: white;
+	background-color:#1D6154;
+}
+
 .btnAddPhoto button {
 	width: 237px;
 	border-radius: 60px;
-	box-shadow: none;
+	border: none;
+	background-color: #A7A7A7;
+	border-color: #A7A7A7;
+}
+
+.btnValiderPhoto button {
+	width: 237px;
+	border-radius: 60px;
+	border: none;
+	background-color: #A7A7A7;
+	border-color: #A7A7A7;
 }
 
 .menu button {
@@ -384,6 +466,7 @@ h3 {
 	padding: 10px 0px 10px 0px;
 	font-family: 'Syne';
 	cursor: pointer;
+	border: none;
 }
 
 
@@ -403,8 +486,6 @@ button {
 	align-items: center;
 	box-shadow: none;
 	cursor: pointer;
-	/* padding: 0px 10% 0px 10%; */
-
 }
 
 
@@ -443,18 +524,16 @@ li:hover {
 	color: #B1663C;
 }
 
+
+.fa-image:before {
+    font-size: 50px;
+}
+
 #photoUploadForm {
-	display: grid;
+    display: flex;
+	flex-direction: column;
 	justify-content: center;
-}
-
-.photoTitle {
-	padding-bottom: 7%;
-
-}
-
-#photoUploadForm button {
-	background-color: #A7A7A7;
+	align-items: center;
 }
 
 .btnValiderPhoto {
@@ -472,13 +551,17 @@ li:hover {
 	font-weight: 500;
 	font-size: 14px;
 	color: #3D3D3D;
+	/* margin-bottom: 10px; */
 }
 
-form input {
-	width: 420px;
-	height: 51px;
-	border-color: #FFFFFF;
-	box-shadow: #000000;
+#photoUploadForm input {
+	width: 379px;
+    height: 30px;
+	width: 379px;
+    height: 45px;
+    box-shadow: 0px 0px 30px 10px #00000017;
+    border: solid 1px white;
+	margin: 10px 0px 20px 0px;
 }
 
 #introduction {

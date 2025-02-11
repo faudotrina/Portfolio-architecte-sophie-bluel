@@ -61,7 +61,7 @@
 
 					</div>
 
-					<div class="trait"></div>
+					<div class="traitAddPhoto"></div>
 					<div class="btnAddPhoto">
 						<button id="openAddPhoto" type="submit">Ajouter une photo</button>
 					</div>
@@ -69,22 +69,27 @@
 			</div>
 
 			<div id="addPhotoModal" class="modal">
-				<div class="modal-content">
+				<div class="modal-content-addPhotoModal">
 					<i id="backToDeleteModal" class="fa-solid fa-arrow-left"></i>
-					<span class="close" id="closeAddPhotoModal">&times;</span>
+					<span class="closeAddPhotoModal" id="closeAddPhotoModal">&times;</span>
 					<h3>Ajout une photo</h3>
+
 					<form id="photoUploadForm">
-						<!-- <label for="photoFile">+ Ajouter photo :</label> -->
-						<input type="file" id="photoFile" accept="image/*" required title="+ Ajouter photo">
+						<div class="squareAddPhoto">
+							<i id="iconeMontagne" class="fa-solid fa-image"></i>
+							<button id="btnPhotoUploadForm" for="photoFile">+ Ajouter photo :</button>
+							<p>jpg, png : 4mo max</p>
+						</div>
 						<div class="photoTitle">
 							<label for="photoTitle">Titre</label><br>
 							<input type="text" id="photoTitle" required>
 						</div>
 						<div class="photoTitle">
 							<label for="photoTitle">Catégorie</label><br>
-							<input type="text" id="photoTitle" required>
+							<input type="select" id="photoTitle" required>
+					
 						</div>
-						<div class="trait"></div>
+						<div class="traitValiderPhoto"></div>
 						<div class="btnValiderPhoto">
 							<button type="submit">Valider</button>
 						</div>
