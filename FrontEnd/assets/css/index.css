@@ -231,6 +231,13 @@ section {
 	padding-top: 20px;
 }
 
+.closeAddPhotoModal:hover,
+.closeAddPhotoModal:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
 #backToDeleteModal {
 	color: #aaa;
 	float: left;
@@ -239,6 +246,13 @@ section {
 	font-weight: bold;
 	padding-left: 30px;
 	padding-top: 25px;
+}
+
+#backToDeleteModal:hover,
+#backToDeleteModal:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 .close:hover,
@@ -261,6 +275,25 @@ section {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	gap: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    background-color: white;
+    width: 385px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-content a {
+	display: block;
+	background-color: white;
+	padding-left: 15px;
+	margin: 10px auto;
+}
+
+.dropdown-content a:hover {
+    background-color: #B9C5CC;
+	padding: 0px;
 }
 
 h1 {
@@ -564,14 +597,14 @@ li:hover {
 	margin: 10px 0px 20px 0px;
 }
 
-.dropdown {
+.btnDropdown {
 	width: 379px;
 	/* height: 100px; */
 	width: 385px;
 	height: 52px;
 	box-shadow: 0px 0px 30px 10px #00000017;
 	border: solid 1px white;
-	margin: 10px 0px 20px 0px;
+	margin: 10px 0px 10px 0px;
 	background-color: white;
 	border-radius: 0px;
 	display: flex;

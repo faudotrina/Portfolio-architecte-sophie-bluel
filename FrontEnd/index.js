@@ -1,5 +1,6 @@
 const response = await fetch("http://localhost:5678/api/works");
 const data = await response.json();
+console.log(data)
 
 function genererArticles(data) {
     document.querySelector(".gallery").innerHTML = "";
@@ -106,7 +107,6 @@ window.onclick = function (event) {
 };
 
 /****** modal ajouter Image *****/
-
 const addPhotoModal = document.getElementById("addPhotoModal");
 const openAddPhotoBtn = document.getElementById("openAddPhoto");
 const closeAddPhotoModal = document.getElementById("closeAddPhotoModal");
@@ -115,7 +115,7 @@ const backToDeleteModal = document.getElementById("backToDeleteModal")
 
 // Ouvrir la modale d'ajout et fermer la modale de suppression
 openAddPhotoBtn.onclick = function () {
-    addPhotoModal.style.display = "flex";  
+    addPhotoModal.style.display = "flex";
     deletePhotoModal.style.display = "none"; // Ferme la première modale
 };
 
@@ -206,3 +206,53 @@ function genererImgModal(data) {
     }
 }
 genererImgModal(data);
+
+/****** Afficher les catégories prensents dans la bdd *****/
+async function genererCategories() {
+    const response = await fetch("http://localhost:5678/api/categories");
+    const data = await response.json();
+    const selectedCategory = document.getElementById("selectedCategory");
+
+    const dropdownContent = document.querySelector(".dropdown-content");
+    dropdownContent.innerHTML = ""; // Vider le contenu avant d'ajouter les nouvelles catégories
+
+    for (let i = 0; i < data.length; i++) {
+        const categoryItem = document.createElement("a");
+        categoryItem.innerText = data[i].name;
+
+        categoryItem.addEventListener("click", (event) => {
+            event.preventDefault();
+            btnDropdown.innerHTML = data[i].name;
+            selectedCategory.innerText = data[i].name;
+            dropdownContent.style.display = "none";
+        });
+
+        dropdownContent.appendChild(categoryItem);
+    }
+}
+
+/****** dropdown menu *****/
+const dropdownContent = document.querySelector(".dropdown-content")
+const btnDropdown = document.querySelector(".btnDropdown")
+
+const category = document.getElementById("photoUploadForm")
+const closeModalAdd = document.getElementById("closeAddPhotoModal")
+const modalAddPhoto = document.getElementById("addPhotoModal")
+
+btnDropdown.onclick = function () {
+    genererCategories()
+    dropdownContent.style.display = "inline-block"
+}
+
+window.onclick = function (event) {
+    if (event.target == category) {
+        dropdownContent.style.display = "none"
+    }
+}
+
+closeModalAdd.onclick = function () {
+    modalAddPhoto.style.display = "none"
+}
+
+
+
