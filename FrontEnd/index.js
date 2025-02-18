@@ -1,6 +1,6 @@
 const response = await fetch("http://localhost:5678/api/works");
 const data = await response.json();
-console.log(data)
+// console.log(data)
 
 function genererArticles(data) {
     document.querySelector(".gallery").innerHTML = "";
@@ -254,5 +254,27 @@ closeModalAdd.onclick = function () {
     modalAddPhoto.style.display = "none"
 }
 
+/****** Ajouter photo *****/
+const fileLabel = document.getElementById("file-Label")
+const fileUpload = document.getElementById("file-upload")
+const imagePreviewContainer = document.getElementById("imagePreviewContainer")
+const imagePreview = document.getElementById("imagePreview")
+const iconeMontagne = document.getElementById("iconeMontagne")
+const infoSize = document.getElementById("infoSize")
 
+fileUpload.addEventListener("change", function () {
+    let files = fileUpload.files //liste les fichiers
 
+    if (files.length > 0) {
+        let file = files[0] //recupere le premier fichier
+        let imageUrl = URL.createObjectURL(file)
+
+        imagePreview.src = imageUrl;
+        imagePreviewContainer.style.display = "flex"
+
+        fileLabel.style.display = "none"
+        fileUpload.style.display = "none"
+        iconeMontagne.style.display = "none"
+        infoSize.style.display = "none"
+    }
+})
