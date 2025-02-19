@@ -261,6 +261,7 @@ const imagePreviewContainer = document.getElementById("imagePreviewContainer")
 const imagePreview = document.getElementById("imagePreview")
 const iconeMontagne = document.getElementById("iconeMontagne")
 const infoSize = document.getElementById("infoSize")
+const btnValide = document.getElementById("btnValide")
 
 fileUpload.addEventListener("change", function () {
     let files = fileUpload.files //liste les fichiers
@@ -275,6 +276,7 @@ fileUpload.addEventListener("change", function () {
         fileLabel.style.display = "none"
         fileUpload.style.display = "none"
         iconeMontagne.style.display = "none"
-        infoSize.style.display = "none"
+        infoSize.style.display = "none";
+        btnValide.style.backgroundColor = "#1D6154"
     }
 })
