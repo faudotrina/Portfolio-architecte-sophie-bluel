@@ -486,7 +486,7 @@ h3 {
 
 .traitValiderPhoto {
 	width: 68%;
-	height: 1px;
+	height: 2px;
 	background-color: #B3B3B3;
 	margin: 20px auto;
 }
@@ -612,29 +612,35 @@ li:hover {
 }
 
 #photoUploadForm input {
-	width: 379px;
-	height: 30px;
-	width: 379px;
-	height: 45px;
+	width: 370px;
+	height: 50px;
 	box-shadow: 0px 0px 30px 10px #00000017;
 	border: solid 1px white;
 	margin: 10px 0px 20px 0px;
+	padding-left: 10px;
 }
 
 .btnDropdown {
-	width: 379px;
-	/* height: 100px; */
 	width: 385px;
 	height: 52px;
 	box-shadow: 0px 0px 30px 10px #00000017;
 	border: solid 1px white;
 	margin: 10px 0px 10px 0px;
-	background-color: white;
-	border-radius: 0px;
-	display: flex;
-	justify-content: end;
-	padding-right: 20px;
+	font-family: 'Work Sans';
+	font-size: 14px;
+	font-weight: 400;
+}
 
+select {
+    width: 220px;
+    padding: 12px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+
+    background-position: right 30px center; 
+    background-size: 16px;
 }
 
 #category button:active {

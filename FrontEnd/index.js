@@ -211,48 +211,24 @@ genererImgModal(data);
 async function genererCategories() {
     const response = await fetch("http://localhost:5678/api/categories");
     const data = await response.json();
-    const selectedCategory = document.getElementById("selectedCategory");
 
-    const dropdownContent = document.querySelector(".dropdown-content");
-    dropdownContent.innerHTML = ""; // Vider le contenu avant d'ajouter les nouvelles catégories
+    const selectedCategory = document.getElementById("selectedCategory");
+    const btnDropdown = document.querySelector(".btnDropdown");
+
+    btnDropdown.innerHTML = "";
 
     for (let i = 0; i < data.length; i++) {
-        const categoryItem = document.createElement("a");
+        const categoryItem = document.createElement("option");
         categoryItem.innerText = data[i].name;
 
-        categoryItem.addEventListener("click", (event) => {
-            event.preventDefault();
-            btnDropdown.innerHTML = data[i].name;
-            selectedCategory.innerText = data[i].name;
-            dropdownContent.style.display = "none";
+        btnDropdown.addEventListener("change", function () {
+            btnDropdown.options[btnDropdown.selectedIndex]
         });
 
-        dropdownContent.appendChild(categoryItem);
+        btnDropdown.appendChild(categoryItem);
     }
 }
-
-/****** dropdown menu *****/
-const dropdownContent = document.querySelector(".dropdown-content")
-const btnDropdown = document.querySelector(".btnDropdown")
-
-const category = document.getElementById("photoUploadForm")
-const closeModalAdd = document.getElementById("closeAddPhotoModal")
-const modalAddPhoto = document.getElementById("addPhotoModal")
-
-btnDropdown.onclick = function () {
-    genererCategories()
-    dropdownContent.style.display = "inline-block"
-}
-
-window.onclick = function (event) {
-    if (event.target == category) {
-        dropdownContent.style.display = "none"
-    }
-}
-
-closeModalAdd.onclick = function () {
-    modalAddPhoto.style.display = "none"
-}
+genererCategories()
 
 /****** Ajouter photo *****/
 const fileLabel = document.getElementById("file-Label")
@@ -267,7 +243,7 @@ fileUpload.addEventListener("change", function () {
     let files = fileUpload.files //liste les fichiers
 
     if (files.length > 0) {
-        let file = files[0] //recupere le premier fichier
+        let file = files[0]
         let imageUrl = URL.createObjectURL(file)
 
         imagePreview.src = imageUrl;
@@ -280,3 +256,30 @@ fileUpload.addEventListener("change", function () {
         btnValide.style.backgroundColor = "#1D6154"
     }
 })
+
+/****** Fonctions reset de chaque champs *****/
+function resetImageUpload() {
+    URL.revokeObjectURL(imagePreview.src);
+
+    // Réinitialiser la prévisualisation
+    imagePreview.src = "";
+    imagePreviewContainer.style.display = "none";
+
+    // Réafficher les éléments cachés
+    fileLabel.style.display = "flex";
+    iconeMontagne.style.display = "block";
+    infoSize.style.display = "block";
+
+    btnValide.style.backgroundColor = "";
+}
+
+backToDeleteModal.addEventListener("click", resetImageUpload);
+closeAddPhotoModal.addEventListener("click", resetImageUpload);
+
+function resetTitle() {
+    const photoTitle = document.getElementById("photoTitleRequired")
+    photoTitle.value = ""
+}
+
+backToDeleteModal.addEventListener("click", resetTitle);
+closeAddPhotoModal.addEventListener("click", resetTitle);

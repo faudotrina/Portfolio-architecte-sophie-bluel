@@ -80,29 +80,25 @@
 							<label for="file-upload" class="btnPhotoUploadForm" id="file-Label">
 								+ Ajouter photo
 							</label>
-							<input id="file-upload" type="file" accept="image/*"/>
+							<input id="file-upload" type="file" accept="image/*" />
 
 							<p id="infoSize">jpg, png : 4mo max</p>
 							<div id="imagePreviewContainer" style="display: none;">
-								<img id="imagePreview" src="" alt="Image sélectionnée" style="max-width: 80%; max-height: 180px;"/>
+								<img id="imagePreview" src="" alt="Image sélectionnée"
+									style="max-width: 80%; max-height: 180px;" />
 							</div>
 						</div>
+
 						<div class="photoTitle">
 							<label for="photoTitle">Titre</label><br>
-							<input type="text" required>
+							<input id="photoTitleRequired" type="text" required >
 						</div>
+
 						<div id="category">
-							<label for="category" id="category">Catégorie</label><br>
+							<label for="category" id="selectedCategory">Catégorie</label><br>
 
-							<button class="btnDropdown">
-								<i class="fa-solid fa-chevron-down" id="iconeDropdown"></i>
-							</button>
-
-							<select name="category" class="dropdown-content" id="category">
-								<option value="volvo">Volvo</option>
-								<option value="saab">Saab</option>
-								<option value="opel">Opel</option>
-								<option value="audi">Audi</option>
+							<select name="category" id="category" class="btnDropdown" required>
+								
 							</select>
 
 						</div>
