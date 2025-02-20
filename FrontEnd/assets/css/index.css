@@ -271,7 +271,7 @@ section {
 }
 
 .modal-img {
-	padding: 20px 90px 20px 60px;
+	padding: 0% 10% 0% 10%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	gap: 5px;
@@ -552,6 +552,11 @@ button {
 	cursor: pointer;
 }
 
+.menu button {
+	background-color: #fffef7;
+	border: solid 2px #1D6154;
+}
+
 nav ul {
 	display: flex;
 	align-items: center;
@@ -632,15 +637,15 @@ li:hover {
 }
 
 select {
-    width: 220px;
-    padding: 12px;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    border-radius: 5px;
-    cursor: pointer;
+	width: 220px;
+	padding: 12px;
+	font-size: 16px;
+	font-family: Arial, sans-serif;
+	border-radius: 5px;
+	cursor: pointer;
 
-    background-position: right 30px center; 
-    background-size: 16px;
+	background-position: right 30px center;
+	background-size: 16px;
 }
 
 #category button:active {

@@ -80,25 +80,25 @@
 							<label for="file-upload" class="btnPhotoUploadForm" id="file-Label">
 								+ Ajouter photo
 							</label>
-							<input id="file-upload" type="file" accept="image/*" />
+							<input id="file-upload" type="file" accept="image/*" required>
 
 							<p id="infoSize">jpg, png : 4mo max</p>
 							<div id="imagePreviewContainer" style="display: none;">
 								<img id="imagePreview" src="" alt="Image sélectionnée"
-									style="max-width: 80%; max-height: 180px;" />
+									style="max-width: 80%; max-height: 180px;" name="imagePreview">
 							</div>
 						</div>
 
 						<div class="photoTitle">
-							<label for="photoTitle">Titre</label><br>
-							<input id="photoTitleRequired" type="text" required >
+							<label for="photoTitleRequired">Titre</label><br>
+							<input id="photoTitleRequired" name="photoTitleRequired" type="text" required>
 						</div>
 
-						<div id="category">
+						<div>
 							<label for="category" id="selectedCategory">Catégorie</label><br>
 
-							<select name="category" id="category" class="btnDropdown" required>
-								
+							<select id="category" name="category" class="btnDropdown" required>
+
 							</select>
 
 						</div>
@@ -110,14 +110,14 @@
 				</div>
 			</div>
 
-			<menu>
-				<nav class="menu">
-					<button class="all">Tous</button>
-					<button class="objects">Objets</button>
-					<button class="appartements">Appartements</button>
-					<button class="bar">Hotels & Restaurants</button>
-				</nav>
-			</menu>
+
+			<nav class="menu">
+				<button class="all">Tous</button>
+				<button class="objects">Objets</button>
+				<button class="appartements">Appartements</button>
+				<button class="bar">Hotels & Restaurants</button>
+			</nav>
+
 
 			<div class="gallery">
 

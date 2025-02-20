@@ -139,7 +139,6 @@ window.onclick = function (event) {
     }
 };
 
-
 document.addEventListener("keydown", function (event) {
     if (event.key === "Escape" || event.key === "Esc") {
         modal.style.display = "none"
@@ -212,21 +211,21 @@ async function genererCategories() {
     const response = await fetch("http://localhost:5678/api/categories");
     const data = await response.json();
 
-    const selectedCategory = document.getElementById("selectedCategory");
     const btnDropdown = document.querySelector(".btnDropdown");
 
     btnDropdown.innerHTML = "";
 
     for (let i = 0; i < data.length; i++) {
+        const category = data[i];
         const categoryItem = document.createElement("option");
-        categoryItem.innerText = data[i].name;
-
-        btnDropdown.addEventListener("change", function () {
-            btnDropdown.options[btnDropdown.selectedIndex]
-        });
-
+        categoryItem.innerText = category.name;
+        categoryItem.value = category.id;
         btnDropdown.appendChild(categoryItem);
     }
+    btnDropdown.addEventListener("change", function () {
+        const selectedCategoryId = btnDropdown.value;
+        console.log("Catégorie sélectionnée : ", selectedCategoryId);
+    });
 }
 genererCategories()
 
@@ -283,3 +282,73 @@ function resetTitle() {
 
 backToDeleteModal.addEventListener("click", resetTitle);
 closeAddPhotoModal.addEventListener("click", resetTitle);
+
+
+/****** Boutton valider *****/
+
+const photoUploadForm = document.getElementById("photoUploadForm");
+
+photoUploadForm.onsubmit = async function (event) {
+    event.preventDefault();
+
+    const token = window.sessionStorage.getItem("token");
+    if (!token) {
+        alert("Vous devez être connecté pour ajouter une image.");
+        return;
+    }
+
+    const fileInput = document.getElementById("file-upload");
+    const file = fileInput.files[0];
+    
+    if (!file) {
+        alert("Veuillez sélectionner un fichier.");      
+        photoUploadForm.reset();
+        return;
+    }
+
+    const allowedTypes = ["image/jpeg", "image/png"];
+    if (!allowedTypes.includes(file.type)) {
+        alert("Seuls les fichiers JPG et PNG sont autorisés.");
+        photoUploadForm.reset();
+        return;
+    }
+
+    const maxSize = 4 * 1024 * 1024; // 4 Mo en octets
+    if (file.size > maxSize) {
+        alert("Le fichier doit être inférieur à 4 Mo.");
+        photoUploadForm.reset();
+        return;
+    }
+
+    const confirmation = confirm("Voulez-vous vraiment ajouter cette image ?");
+    if (!confirmation) return;
+
+    const formData = new FormData(photoUploadForm);
+
+    formData.append("title", document.getElementById("photoTitleRequired").value);
+    formData.append("categoryId", Number(document.querySelector("[name=category]").value));
+    formData.append("image", document.getElementById("file-upload").files[0]);
+
+
+    try {
+        let response = await fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+            },
+            body: formData
+        });
+
+        if (!response.ok) {
+            let errorResponse = await response.json();
+            console.error("Erreur serveur :", errorResponse);
+            alert(`Erreur serveur : ${errorResponse.message || "Problème inconnu"}`);
+            return;
+        }
+
+        alert("Image ajoutée avec succès !");
+    } catch (error) {
+        console.error("Erreur :", error);
+        alert("Une erreur est survenue.");
+    }
+};
