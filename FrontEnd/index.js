@@ -146,6 +146,7 @@ document.addEventListener("keydown", function (event) {
 })
 
 async function supprimerImage(imageId, figureElement) {
+    
     const token = window.sessionStorage.getItem("token"); // Récupère le token d'authentification
 
     if (!token) {
